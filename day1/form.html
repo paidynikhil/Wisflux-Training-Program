@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+      const handleSubmit = (submitEvent)=>{
+        const form = document.getElementById("Registration");
+        submitEvent.preventDefault();
+        const formData = new FormData(form);
+
+        console.log(Object.fromEntries(formData));
+        alert(JSON.stringify(Object.fromEntries(formData),null));
+      };
+    </script>
+  <link rel="stylesheet" href="style.css">
+  <title>html basics</title>
+</head>
+<body>
+  <br/>
+  <code>Registration Form:</code>
+  <br/>
+  <form id="registrationForm" onSubmit="return handleSubmit(event);">
+    <div>
+      <label for="firstName">firstName</label>
+      <input required type= "text" placeholder="First name" name="firstName" required>
+    </div>
+    <div>
+      <label for="lastName">lastName</label>
+      <input  required type= "text" placeholder="LastName" name="lastName" required>
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input required type= "password" placeholder="password" name="password" required>
+    </div>
+    <div>
+<label for="phoneNumber">PhoneNumber</label>
+<input  required type="number" name="phone" placeholder="password">
+    </div>
+    <div>
+      <label for="gender">Gender:</label>
+      <br/>
+      <span>
+      <label style="user-select: none">
+        <input type="radio" name="gender" value="male">
+        Male
+      </label>
+      </span>
+      <span>
+      <label style="user-select: none">
+        <input type="radio" name="gender" value="female">
+        FeMale
+      </label>
+      </span>
+      <span>
+      <label style="user-select: none">
+        <input type="radio" name="gender" value="notsay">
+        Prefer not to say
+      </label>
+      </span>
+    </div>
+    <div>
+      <label for="receiveEmails">
+        <input type="checkbox" name="receiveEmails"> Do you want to receive emails?
+      </label>
+    </div>
+    <div>
+      <label for="country">Country</label>
+      <select name="country">
+        <option selected disabled>-- Select Country --</option>
+        <option value="ind">India</option>
+        <option value="usa">United Stated of America</option>
+        <option value="UK">United Kingdom</option>
+      </select>
+    </div>
+    <div>
+      <button type="submit"> Submit</button>
+    </div>
+    </form>
+</body>
+</html>

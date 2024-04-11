@@ -1,0 +1,160 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+     body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; /* Center content vertically */
+      margin: 0;
+      flex-direction: row;
+      gap: 20px;
+    }
+
+    .caption {
+      font-size: 24px;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .main {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 20px; /* Space between session and local */
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      width: 80%; /* Adjust width as needed */
+    }
+
+    .session, .local {
+      border: 1px solid black;
+      padding: 20px;
+      width: 100%; /* Set full width for each storage section */
+      box-sizing: border-box; /* Include padding in width */
+    }
+
+    h2 {
+      text-align: center;
+    }
+  </style>
+  <title>Web Storage</title>
+</head>
+<body>
+  <code class="caption">Web Storage</code>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <div class="main">
+  <div class="session">
+  <h2> Session Storage</h2>
+  <p>- Stores data for a particular "session". if the tab or window is closed, the data is cleared.</p>
+  <p>- Storage size limits almost 5MB.</p>
+  </div>
+  <div class="local">
+  <h2> Local Storage</h2>
+  <p>- Stores data for a locally. This doesn't expire unless cleared using javascript or clearing cache of the browser/tab.</p>
+  <p>- Storage size limits almost 5MB.</p>
+  </div>
+  </div>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counter App</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f4f4f4;
+      }
+
+      section {
+        margin-bottom: 20px;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <section>Current Counter: <span id="counter">0</span></section>
+      <section>Local Counter: <span id="counter-local">0</span></section>
+      <section>Session Counter: <span id="counter-session">0</span></section>
+      <button id="increment-btn">Increment Counter</button>
+      <br /><br />
+      <button id="local-btn">Save to LocalStorage</button>
+      <button id="session-btn">Save to SessionStorage</button>
+    </div>
+
+    <script>
+      let counter = 0;
+      const sessionCounterKey = "session-counter";
+      const localCounterKey = "local-counter";
+
+      const counterSpan = document.getElementById("counter");
+      const localCounterSpan = document.getElementById("counter-local");
+      const sessionCounterSpan = document.getElementById("counter-session");
+
+      const incrementBtn = document.getElementById("increment-btn");
+      const localStorageBtn = document.getElementById("local-btn");
+      const sessionStorageBtn = document.getElementById("session-btn");
+
+      incrementBtn.addEventListener("click", () => {
+        counter++;
+        counterSpan.innerHTML = counter;
+      });
+
+      localStorageBtn.addEventListener("click", () => {
+        localStorage.setItem(localCounterKey, counter.toString());
+        localCounterSpan.innerHTML = counter;
+      });
+
+      sessionStorageBtn.addEventListener("click", () => {
+        sessionStorage.setItem(sessionCounterKey, counter.toString());
+        sessionCounterSpan.innerHTML = counter;
+      });
+
+      window.addEventListener("load", () => {
+        const savedLocalCounter = localStorage.getItem(localCounterKey);
+        const savedSessionCounter = sessionStorage.getItem(sessionCounterKey);
+
+        if (savedLocalCounter !== null) {
+          localCounterSpan.innerHTML = savedLocalCounter;
+        }
+
+        if (savedSessionCounter !== null) {
+          sessionCounterSpan.innerHTML = savedSessionCounter;
+        }
+      });
+    </script>
+  </body>
+</html>
