@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Grade Checker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="grade-checker">
+        <h2>Student Grade Checker</h2>
+        <div class="form-group">
+            <label class="label" for="examType">Exam Type:</label>
+            <select class="input-field" id="examType">
+                <option value="regular">Regular Exam</option>
+                <option value="final">Final Exam</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="label" for="totalMarks">Total Marks:</label>
+            <input class="input-field" type="number" id="totalMarks" placeholder="Enter total marks">
+        </div>
+        <button onclick="checkGrade()">Check Grade</button>
+        <p id="result"></p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
