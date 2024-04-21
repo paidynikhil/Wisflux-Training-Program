@@ -1,0 +1,15 @@
+{
+  "name": "practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.ts",
+  "scripts": {
+    "dev": "nodemon --exec 'ts-node --cache-directory .tscache' server.ts",
+    "start": "ts-node server.ts"
+  },
+  "author": "nikhil",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^20.12.7"
+  }
+}
